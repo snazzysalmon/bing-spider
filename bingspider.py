@@ -22,10 +22,7 @@ def scraper(lastquery):
     global lastscore
     for x in range(int(lastscore), int(score)):
         query = re.sub("first=[0-9]*", "first=" + str(x), lastquery)
-        try:
-            r=requests.get(query)
-        except:
-            pass
+        r=requests.get(query)
         print(query)
         soup = BeautifulSoup(r.text, 'html.parser')
         for link in soup.find_all('a'):
